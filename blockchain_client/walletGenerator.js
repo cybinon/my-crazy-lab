@@ -17,6 +17,7 @@ const { BIP32Factory } = require('bip32');
 const ecc = require('tiny-secp256k1');
 const axios = require('axios');
 
+
 const huntWallet = async () => {
   const bip32 = BIP32Factory(ecc);
   // Replace this with your own mnemonic
@@ -67,4 +68,5 @@ const huntWallet = async () => {
   await huntWallet();
 }
 
-huntWallet();
+// huntWallet();
+module.exports = { getRandomWords, huntWallet }
