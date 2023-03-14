@@ -56,9 +56,7 @@ export default function Home() {
             {messages.map((el, i) =>
               <div key={Date.now().toString(32)+i} className={el.role === "user" ? "message-right" : "message-left"}>
                 <span style={{ fontWeight: "bold" }}>{el.role}</span>
-                <p>
-                  {el.content}
-                </p>
+                <p  dangerouslySetInnerHTML={{__html:el.content.split("\n").join("<br />")}}/>
               </div>
             )}
           </div>

@@ -17,6 +17,9 @@ const ask = async (messages: ChatCompletionRequestMessage[]) => {
   const completion = await openai.createChatCompletion({
     model: "gpt-3.5-turbo",
     messages
+  }).catch(e => {
+    console.log(JSON.stringify(e.response.data))
+    throw e
   });
 
   return completion
