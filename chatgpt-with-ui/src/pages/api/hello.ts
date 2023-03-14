@@ -41,7 +41,8 @@ export default async function handler(
   const session = req.body.session;
   if (!session) res.status(400).json({ message: "session required" })
   if (!sessions[session]) sessions[session] = { en: [], mn: [] }
-
+  console.log(sessions[session])
+  if(req.query.init) return res.status(200).json(sessions[session].mn)
   const en = { role: "user", content: await translateIt(req.body.message, "en") }
   const mn = { role: "user", content: req.body.message }
 

@@ -24,6 +24,14 @@ export default function Home() {
       setSession(tempS)
       localStorage.setItem("chat_s", tempS)
     }
+    axios({
+      method: "post",
+      url: "/api/hello?init=true",
+      data: {
+        session: localStorage.getItem("chat_s"),
+        message: input
+      }
+    }).then(({ data }) => setMessages(data)).catch(e => alert(e.message))
   }, [])
 
   const sendHandle = async () => {
