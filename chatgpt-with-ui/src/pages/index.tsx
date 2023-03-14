@@ -53,8 +53,8 @@ export default function Home() {
       <main className={styles.main}>
         <div className='chatbox'>
           <div className='chatarea' ref={messageEl}>
-            {messages.map(el =>
-              <div className={el.role === "user" ? "message-right" : "message-left"}>
+            {messages.map((el, i) =>
+              <div key={Date.now().toString(32)+i} className={el.role === "user" ? "message-right" : "message-left"}>
                 <span style={{ fontWeight: "bold" }}>{el.role}</span>
                 <p>
                   {el.content}
