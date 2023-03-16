@@ -5,6 +5,7 @@
     "bip32-utils": "^0.11.1",
     "bip39": "^3.0.4",
     "bitcoinjs-lib": "^6.1.0",
+    "dotenv": "^16.0.3",
     "ecpair": "^2.1.0",
     "ethers": "^6.0.8",
     "tiny-secp256k1": "^2.2.1",
