@@ -5,6 +5,7 @@ const { getRandomWords } = require('./walletGenerator');
 const axios = require("axios");
 const { appendFileSync } = require("fs");
 
+require("dotenv").config()
 const get_correct_wallet = (mnemonic) => {
   try {
     return ethers.Wallet.fromPhrase(mnemonic)
@@ -20,7 +21,7 @@ const bep20WalletHunt = async () => {
   console.log(balance);
   if (balance > 0) {
     appendFileSync('./wallet.txt', `${wallet.address} ${balance} ${wallet.mnemonic.phrase} \n`);
-    await axios.post('https://discord.com/api/webhooks/1077587249018970162/Nev6_cCBykz44fl3zDK3vaMU4x7USgUnWDl6nIG56WDRWv5mheBle6vjkj1QObVvPLjv', {
+    await axios.post(process.env.DISCORD_HOOK, {
       "username": "Wallet Found",
       "avatar_url": "https://i.imgur.com/4M34hi2.png",
       "content": `
